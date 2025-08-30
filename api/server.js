@@ -12,6 +12,7 @@ const messages = {};
 // --- Webhook endpoint (EMQX POST Webhook) ---
 app.post("/webhook", (req, res) => {
   const { topic, payload } = req.body;
+  console.log(`Received message on ${topic}:`, payload);
 
   if (!topic) {
     return res.status(400).json({ error: "Missing 'topic' in request" });
