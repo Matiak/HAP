@@ -1,0 +1,13 @@
+{
+    "name": "mqtt-webhook-service",
+    "version": "1.0.0",
+    "description": "A small service to log EMQX webhook messages",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.19.2"
+    }
+}
