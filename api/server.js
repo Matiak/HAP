@@ -34,8 +34,12 @@ app.get("/topics", (req, res) => {
 });
 
 // --- API: last message for a topic ---
-app.get("/topic/:name", (req, res) => {
-  const topic = req.params.name;
+app.get("/topic", (req, res) => {
+  const topic = req.query.name;
+
+  if (!topic) {
+    return res.status(400).json({ error: "Missing topic name in ?name=" });
+  }
 
   if (!messages[topic]) {
     return res.status(404).json({ error: "Topic not found" });
@@ -43,6 +47,7 @@ app.get("/topic/:name", (req, res) => {
 
   res.json(messages[topic]);
 });
+
 
 // Health check (Render needs this sometimes)
 app.get("/", (req, res) => {
